@@ -239,11 +239,9 @@ namespace BootRoutine
             try
             {
                 string path = openFileDialog1.FileName;
-                int sisi = tasklist.Items.Count;
-                if (path == null || path == "openFileDialog1" || path == tasklist.Items[sisi-1])
+                if (path == null || path == "openFileDialog1" || tasklist.Items.Contains(path))
                 {
-                    int t = 0;
-                    int s = 1 / t;
+                    int t = 0, s = 1 / t;
                 }
                 ptf(CurrentPath, path + "\n", false);
             }
