@@ -58,7 +58,7 @@
             this.runroutine.Location = new System.Drawing.Point(525, 12);
             this.runroutine.Name = "runroutine";
             this.runroutine.Size = new System.Drawing.Size(75, 23);
-            this.runroutine.TabIndex = 0;
+            this.runroutine.TabIndex = 7;
             this.runroutine.Text = "Run";
             this.runroutine.UseVisualStyleBackColor = true;
             this.runroutine.Click += new System.EventHandler(this.button1_Click);
@@ -72,7 +72,8 @@
             this.routinelist.MaxDropDownItems = 20;
             this.routinelist.Name = "routinelist";
             this.routinelist.Size = new System.Drawing.Size(121, 21);
-            this.routinelist.TabIndex = 2;
+            this.routinelist.Sorted = true;
+            this.routinelist.TabIndex = 1;
             this.routinelist.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tasklist
@@ -81,7 +82,8 @@
             this.tasklist.Location = new System.Drawing.Point(139, 12);
             this.tasklist.Name = "tasklist";
             this.tasklist.Size = new System.Drawing.Size(380, 184);
-            this.tasklist.TabIndex = 3;
+            this.tasklist.TabIndex = 999;
+            this.tasklist.TabStop = false;
             this.tasklist.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // newroutine
@@ -89,7 +91,7 @@
             this.newroutine.Location = new System.Drawing.Point(12, 39);
             this.newroutine.Name = "newroutine";
             this.newroutine.Size = new System.Drawing.Size(121, 23);
-            this.newroutine.TabIndex = 4;
+            this.newroutine.TabIndex = 3;
             this.newroutine.Text = "New";
             this.newroutine.UseVisualStyleBackColor = true;
             this.newroutine.Click += new System.EventHandler(this.button2_Click);
@@ -114,7 +116,7 @@
             this.newroutinename.Location = new System.Drawing.Point(12, 71);
             this.newroutinename.Name = "newroutinename";
             this.newroutinename.Size = new System.Drawing.Size(121, 20);
-            this.newroutinename.TabIndex = 6;
+            this.newroutinename.TabIndex = 4;
             this.newroutinename.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // saveroutine
@@ -132,7 +134,7 @@
             this.remove_tasks.Location = new System.Drawing.Point(12, 97);
             this.remove_tasks.Name = "remove_tasks";
             this.remove_tasks.Size = new System.Drawing.Size(121, 23);
-            this.remove_tasks.TabIndex = 8;
+            this.remove_tasks.TabIndex = 6;
             this.remove_tasks.Text = "Remove selected";
             this.remove_tasks.UseVisualStyleBackColor = true;
             this.remove_tasks.Click += new System.EventHandler(this.button5_Click);
@@ -142,7 +144,7 @@
             this.newtask.Location = new System.Drawing.Point(12, 126);
             this.newtask.Name = "newtask";
             this.newtask.Size = new System.Drawing.Size(121, 23);
-            this.newtask.TabIndex = 9;
+            this.newtask.TabIndex = 7;
             this.newtask.Text = "Add path";
             this.newtask.UseVisualStyleBackColor = true;
             this.newtask.Click += new System.EventHandler(this.button6_Click);
@@ -152,7 +154,7 @@
             this.removeroutine.Location = new System.Drawing.Point(12, 173);
             this.removeroutine.Name = "removeroutine";
             this.removeroutine.Size = new System.Drawing.Size(121, 23);
-            this.removeroutine.TabIndex = 10;
+            this.removeroutine.TabIndex = 9;
             this.removeroutine.Text = "Delete routine";
             this.removeroutine.UseVisualStyleBackColor = true;
             this.removeroutine.Click += new System.EventHandler(this.removeroutine_Click);
@@ -162,7 +164,7 @@
             this.exit.Location = new System.Drawing.Point(525, 173);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(75, 23);
-            this.exit.TabIndex = 11;
+            this.exit.TabIndex = 8;
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = true;
             this.exit.Click += new System.EventHandler(this.exit_Click);
@@ -190,7 +192,6 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "BootRoutine";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

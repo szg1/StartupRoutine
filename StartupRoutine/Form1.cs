@@ -115,13 +115,27 @@ namespace BootRoutine
             }
             RefreshComboBox();
         }
-        public static void startprocess(string path, string args = "")
+        public static void startprocess(string path, string idot = "", string args = "")
         {
-            Process ExternalProcess = new Process();
-            ExternalProcess.StartInfo.FileName = path;
-            ExternalProcess.StartInfo.Arguments = args;
-            ExternalProcess.Start();
-            ExternalProcess.WaitForExit();
+            if (idot == "")
+            {
+                ProcessStartInfo ProcessInfo;
+                
+                
+                Process torun = new Process();
+                torun.StartInfo.FileName = path;
+                torun.StartInfo.Arguments = args;
+                torun.Start();
+                torun.WaitForExit();
+            }
+            else
+            {
+                System.IO.File.WriteAllText("torun/" + idot + ".cmd", "start " + path + " " + args + "\nexit");
+                Process ExternalProcess = new Process();
+                ExternalProcess.StartInfo.FileName = Path.GetFullPath("torun/" + idot + ".cmd");
+                ExternalProcess.Start();
+                ExternalProcess.WaitForExit();
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -134,9 +148,14 @@ namespace BootRoutine
                 }
             }
             List<Thread> procs = new List<Thread>();
-            for (int i = 0; i < tasks.Count; i++)
+            for (int i = 0; i < tasks.Count - 1; i++)
             {
-                procs.Add(new Thread(() => startprocess(tasks[i])));
+                System.IO.Directory.CreateDirectory("torun");
+                System.IO.File.Create("torun/" + i + ".cmd");
+            }
+            for (int i = 0; i < tasks.Count-1; i++)
+            {
+                procs.Add(new Thread(() => startprocess(tasks[i], i.ToString())));
                 procs[i].Start();
             }
             notifyIcon1.Visible = true;
@@ -241,7 +260,7 @@ namespace BootRoutine
                 string path = openFileDialog1.FileName;
                 if (path == null || path == "openFileDialog1" || tasklist.Items.Contains(path))
                 {
-                    int t = 0, s = 1 / t;
+                    throw new Exception();
                 }
                 ptf(CurrentPath, path + "\n", false);
             }
@@ -250,7 +269,8 @@ namespace BootRoutine
                 DialogResult dialogResult = MessageBox.Show("Add path manually?", "Windows didn't like that", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    startprocess("notepad", Path.GetFullPath(CurrentPath));
+                    startprocess("notepad", "", Path.GetFullPath(CurrentPath));
+                    RefreshCheckList();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
